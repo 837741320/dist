@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qfedu.mapper.BrokerMapper" >
+  <resultMap id="BaseResultMap" type="com.qfedu.pojo.Broker" >
+    <id column="broker_id" property="brokerId" jdbcType="INTEGER" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="passowrd" property="passowrd" jdbcType="VARCHAR" />
+    <result column="company_id" property="companyId" jdbcType="INTEGER" />
+    <result column="broker_nickname" property="brokerNickname" jdbcType="VARCHAR" />
+    <result column="broker_realname" property="brokerRealname" jdbcType="VARCHAR" />
+    <result column="broker_IDCAR" property="brokerIdcar" jdbcType="VARCHAR" />
+    <result column="broker_email" property="brokerEmail" jdbcType="VARCHAR" />
+    <result column="broker_code" property="brokerCode" jdbcType="VARCHAR" />
+    <result column="broker_complain" property="brokerComplain" jdbcType="INTEGER" />
+    <result column="broker_blacklist" property="brokerBlacklist" jdbcType="INTEGER" />
+    <result column="broker_deal" property="brokerDeal" jdbcType="INTEGER" />
+    <result column="broker_credit" property="brokerCredit" jdbcType="INTEGER" />
+    <result column="state" property="state" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    broker_id, username, passowrd, company_id, broker_nickname, broker_realname, broker_IDCAR, 
+    broker_email, broker_code, broker_complain, broker_blacklist, broker_deal, broker_credit, 
+    state
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_broker
+    where broker_id = #{brokerId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_broker
+    where broker_id = #{brokerId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.qfedu.pojo.Broker" >
+    insert into t_broker (broker_id, username, passowrd, 
+      company_id, broker_nickname, broker_realname, 
+      broker_IDCAR, broker_email, broker_code, 
+      broker_complain, broker_blacklist, broker_deal, 
+      broker_credit, state)
+    values (#{brokerId,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{passowrd,jdbcType=VARCHAR}, 
+      #{companyId,jdbcType=INTEGER}, #{brokerNickname,jdbcType=VARCHAR}, #{brokerRealname,jdbcType=VARCHAR}, 
+      #{brokerIdcar,jdbcType=VARCHAR}, #{brokerEmail,jdbcType=VARCHAR}, #{brokerCode,jdbcType=VARCHAR}, 
+      #{brokerComplain,jdbcType=INTEGER}, #{brokerBlacklist,jdbcType=INTEGER}, #{brokerDeal,jdbcType=INTEGER}, 
+      #{brokerCredit,jdbcType=INTEGER}, #{state,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.qfedu.pojo.Broker" >
+    insert into t_broker
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="brokerId != null" >
+        broker_id,
+      </if>
+      <if test="username != null" >
+        username,
+      </if>
+      <if test="passowrd != null" >
+        passowrd,
+      </if>
+      <if test="companyId != null" >
+        company_id,
+      </if>
+      <if test="brokerNickname != null" >
+        broker_nickname,
+      </if>
+      <if test="brokerRealname != null" >
+        broker_realname,
+      </if>
+      <if test="brokerIdcar != null" >
+        broker_IDCAR,
+      </if>
+      <if test="brokerEmail != null" >
+        broker_email,
+      </if>
+      <if test="brokerCode != null" >
+        broker_code,
+      </if>
+      <if test="brokerComplain != null" >
+        broker_complain,
+      </if>
+      <if test="brokerBlacklist != null" >
+        broker_blacklist,
+      </if>
+      <if test="brokerDeal != null" >
+        broker_deal,
+      </if>
+      <if test="brokerCredit != null" >
+        broker_credit,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="brokerId != null" >
+        #{brokerId,jdbcType=INTEGER},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="passowrd != null" >
+        #{passowrd,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null" >
+        #{companyId,jdbcType=INTEGER},
+      </if>
+      <if test="brokerNickname != null" >
+        #{brokerNickname,jdbcType=VARCHAR},
+      </if>
+      <if test="brokerRealname != null" >
+        #{brokerRealname,jdbcType=VARCHAR},
+      </if>
+      <if test="brokerIdcar != null" >
+        #{brokerIdcar,jdbcType=VARCHAR},
+      </if>
+      <if test="brokerEmail != null" >
+        #{brokerEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="brokerCode != null" >
+        #{brokerCode,jdbcType=VARCHAR},
+      </if>
+      <if test="brokerComplain != null" >
+        #{brokerComplain,jdbcType=INTEGER},
+      </if>
+      <if test="brokerBlacklist != null" >
+        #{brokerBlacklist,jdbcType=INTEGER},
+      </if>
+      <if test="brokerDeal != null" >
+        #{brokerDeal,jdbcType=INTEGER},
+      </if>
+      <if test="brokerCredit != null" >
+        #{brokerCredit,jdbcType=INTEGER},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qfedu.pojo.Broker" >
+    update t_broker
+    <set >
+      <if test="username != null" >
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="passowrd != null" >
+        passowrd = #{passowrd,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null" >
+        company_id = #{companyId,jdbcType=INTEGER},
+      </if>
+      <if test="brokerNickname != null" >
+        broker_nickname = #{brokerNickname,jdbcType=VARCHAR},
+      </if>
+      <if test="brokerRealname != null" >
+        broker_realname = #{brokerRealname,jdbcType=VARCHAR},
+      </if>
+      <if test="brokerIdcar != null" >
+        broker_IDCAR = #{brokerIdcar,jdbcType=VARCHAR},
+      </if>
+      <if test="brokerEmail != null" >
+        broker_email = #{brokerEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="brokerCode != null" >
+        broker_code = #{brokerCode,jdbcType=VARCHAR},
+      </if>
+      <if test="brokerComplain != null" >
+        broker_complain = #{brokerComplain,jdbcType=INTEGER},
+      </if>
+      <if test="brokerBlacklist != null" >
+        broker_blacklist = #{brokerBlacklist,jdbcType=INTEGER},
+      </if>
+      <if test="brokerDeal != null" >
+        broker_deal = #{brokerDeal,jdbcType=INTEGER},
+      </if>
+      <if test="brokerCredit != null" >
+        broker_credit = #{brokerCredit,jdbcType=INTEGER},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=INTEGER},
+      </if>
+    </set>
+    where broker_id = #{brokerId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qfedu.pojo.Broker" >
+    update t_broker
+    set username = #{username,jdbcType=VARCHAR},
+      passowrd = #{passowrd,jdbcType=VARCHAR},
+      company_id = #{companyId,jdbcType=INTEGER},
+      broker_nickname = #{brokerNickname,jdbcType=VARCHAR},
+      broker_realname = #{brokerRealname,jdbcType=VARCHAR},
+      broker_IDCAR = #{brokerIdcar,jdbcType=VARCHAR},
+      broker_email = #{brokerEmail,jdbcType=VARCHAR},
+      broker_code = #{brokerCode,jdbcType=VARCHAR},
+      broker_complain = #{brokerComplain,jdbcType=INTEGER},
+      broker_blacklist = #{brokerBlacklist,jdbcType=INTEGER},
+      broker_deal = #{brokerDeal,jdbcType=INTEGER},
+      broker_credit = #{brokerCredit,jdbcType=INTEGER},
+      state = #{state,jdbcType=INTEGER}
+    where broker_id = #{brokerId,jdbcType=INTEGER}
+  </update>
+</mapper>
